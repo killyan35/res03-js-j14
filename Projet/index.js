@@ -19,7 +19,13 @@ let user2 = new User ("2","username2", "email2", "password2", "firstName2", "las
 
 let users = [user0, user1, user2];
 
-console.log(save1); 
    
-    
+
+let use = new UserManager(users);
+use.load();
+console.log(use);
+use.save();
+console.log(use);
+
+
 });

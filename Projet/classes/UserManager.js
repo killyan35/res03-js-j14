@@ -1,12 +1,12 @@
 import { Book } from "./Book.js";
 import { User } from "./User.js";
-class BookManager {
+class UserManager {
     #users;   
     
     
        constructor(users)
     {
-        this.#users = users;
+        this.#users = [];
     } 
             get users (){
                 return this.#users;
@@ -39,7 +39,7 @@ class BookManager {
             
         };
         save() {
-            sessionStorage.setItem("user", JSON.stringify(users));
+            sessionStorage.setItem("user", JSON.stringify(this.#users));
         };
         load() {
             let SaveUser = [];
@@ -64,4 +64,4 @@ class BookManager {
                 };
             
 };
-export { BookManager };
+export { UserManager };

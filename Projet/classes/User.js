@@ -1,3 +1,4 @@
+import { UserManager } from "./UserManager.js";
 class User {
     #id;
     #username;

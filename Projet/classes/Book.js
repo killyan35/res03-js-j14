@@ -1,3 +1,4 @@
+import { BookManager } from "./BookManager.js";
 class Book {
     #id;
     #title;
