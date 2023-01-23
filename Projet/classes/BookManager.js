@@ -4,8 +4,8 @@ class BookManager {
     #books;   
     
     
-       constructor(books){
-        this.#books = [];
+       constructor(books = []){
+        this.#books = books;
     } 
             get books (){
                 return this.#books;
@@ -23,8 +23,9 @@ class BookManager {
             for(let i = 0; i < this.#books.length; i++)
             {   
                 AllBooks.push(this.#books[i]);
-                return AllBooks ;
+                
             }
+            return AllBooks ;
             
         }
         
@@ -35,18 +36,18 @@ class BookManager {
             {   
                 
             
-                if (this.#books[i].id === this.#books.id)
+                if (this.#books[i].id === id)
                 {
                     BookbyId.push(this.#books[i]);
-                    return BookbyId;
+                    
                 }
                 else 
                 {
-                    BookbyId = null;
-                    return BookbyId;
+                    BookbyId = [];
                 }
             }
-        };
+            return BookbyId;
+        }
         findBooksByTitle(title) {
             let BookbyTitle = [];
     
@@ -54,19 +55,19 @@ class BookManager {
                 {   
                     
                 
-                    if (this.#books[i].title === this.#books.title)
+                    if (this.#books[i].title === title)
                     {
                         BookbyTitle.push(this.#books[i]);
-                        return BookbyTitle;
                     }
                     else 
                     {
-                        BookbyTitle = null;
-                        return BookbyTitle;
+                        BookbyTitle = [];
+                        
                     }
                 }
+                return BookbyTitle;
             
-        };
+        }
         findBooksByAuthor(author) {
             let BookbyAuthor = [];
     
@@ -74,50 +75,69 @@ class BookManager {
                 {   
                     
                 
-                    if (this.#books[i].author === this.#books.author)
+                    if (this.#books[i].author === author)
                     {
                         BookbyAuthor.push(this.#books[i]);
-                        return BookbyAuthor;
                     }
                     else 
                     {
-                        BookbyAuthor = null;
-                        return BookbyAuthor;
+                        BookbyAuthor = [];
                     }
                 }
-        };
+                return BookbyAuthor;
+        }
         findBooksByPublicationYear(year) {
             let BookbyYear = [];
-    
+            
                 for(let i = 0; i < this.#books.length; i++)
-                {   
+                {  
+                   console.log(this.#books[i].publicationDate);
+                    if (this.#books[i].publicationDate === year)
                     
-                
-                    if (this.#books[i].publicationDate === this.#books.publicationDate)
-                    {
+                    {   
                         BookbyYear.push(this.#books[i]);
-                        return BookbyYear;
                     }
                     else 
                     {
-                        BookbyYear = null;
-                        return BookbyYear;
+                       BookbyYear = [];
                     }
+                    
                 }
-            
-        };
+                return BookbyYear;
+        }
         createBook(book) {
             this.#books.push(book);
-        };
+        }
         deleteBook(bookId) {
-            this.#books.pop();
-        };
+            deleteb = [ ];
+            
+            for(let i = 0; i < this.#books.length; i++)
+            {
+                if (this.#books[i].id !== bookId)
+                    
+                    {   
+                        deleteb.push(this.#books[i]);
+                        
+                    }   
+            }
+            this.#books=deleteb;
+        }
         editBook(book) {
-            this.#books
-        };
+               
+            
+            for(let i = 0; i < this.#books.length; i++)
+            {
+                if (book.id === this.#books[i].id)
+                    
+                    {   
+                        this.#books[i] = book;
+                        
+                    }   
+            }
+        }
         save() {
             sessionStorage.setItem("books", JSON.stringify(this.#books));
-        };
+        }
         load() {
             
         let SaveBook = [];
