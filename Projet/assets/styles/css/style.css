@@ -52,12 +52,12 @@ table {
   border-spacing: 0;
 }
 
-body main section form fieldset {
+body main section {
   display: grid;
   grid-template-columns: 0.8fr 1fr 1fr 0.8fr;
   grid-template-rows: 1fr 0.2fr;
 }
-body main section form fieldset #s1 {
+body main section #form {
   grid-column: 3/4;
   grid-row: 1/2;
   border-left: 5px #000000;
@@ -70,7 +70,7 @@ body main section form fieldset #s1 {
   font-size: 1.4rem;
   border: #000000;
 }
-body main section form fieldset #s2 {
+body main section #s2 {
   grid-column: 2/3;
   grid-row: 1/2;
   display: flex;
@@ -81,18 +81,25 @@ body main section form fieldset #s2 {
   line-height: 1.5rem;
   font-size: 1.3rem;
 }
-body main section form fieldset #s3 {
-  grid-column: 2/4;
+body main section #s3 {
+  grid-column: 3/4;
   grid-row: 2/3;
   text-align: center;
   align-items: center;
   justify-content: center;
 }
-body main section form fieldset input {
+body main section #s4 {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+body main section input {
   font-size: 2rem;
   width: 80%;
 }
-body main section form fieldset .btn-red {
+body main section .btn-red {
   margin-top: 2rem;
   background-color: #ba0534;
   align-items: center;
@@ -113,15 +120,15 @@ body main section form fieldset .btn-red {
   touch-action: manipulation;
   width: auto;
 }
-body main section form fieldset .btn-red:hover,
-body main section form fieldset .btn-red:focus {
+body main section .btn-red:hover,
+body main section .btn-red:focus {
   background-color: #B22222;
   box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
-body main section form fieldset .btn-red:hover {
+body main section .btn-red:hover {
   transform: translateY(-1px);
 }
-body main section form fieldset .btn-red:active {
+body main section .btn-red:active {
   background-color: #B22222;
   box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
   transform: translateY(0);

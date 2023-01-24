@@ -21,55 +21,51 @@ let users = [user0, user1, user2];
 
 let newuser = [];
 let userMan = new UserManager(newuser);
-
-let formulaire = document.getElementById("fieldset");
-
-
 let btn = document.getElementById("form");
 
 btn.addEventListener('submit', function(event)
         {
             event.preventDefault();
-            let userID = newuser.length + 1;
-            let username = document.getElementById("username").value;
-            let email = document.getElementById("email").value;
-            let password = document.getElementById("password").value;
-            let confirm = document.getElementById("confirm").value;
-            let firstName = document.getElementById("firstname").value;
-            let lastName = document.getElementById("lastname").value;
-            let profileImage = document.getElementById("img").value;
-         
-           
-           
-            if (userMan.users.length === 0)
-            {
-                console.log("c'est le premier");
-               let newuser2 = new User(userID, username, email, password, confirm, firstName, lastName, profileImage );
-               userMan.createUser(newuser2);
-               userMan.save();
-               userMan.load();
-               console.log(userMan);
-            }
-               
-            else {
-             
-                    for (let i = 0; i < userMan.users.length; i++)
-                    
-                    {
-                       if  (userMan.users[i].email === email ) {
-                           console.log("existe deja");
-                       }
-                       else 
-                       {
-                           console.log("existe pas encore");
-                           let newuser2 = new User(userID, username, email, password, confirm, firstName, lastName, profileImage );
-                           userMan.createUser(newuser2);
-                           userMan.save();
-                       }
-                       
-                    }
-            } 
+            userMan.createUser();
+            userMan.save();
+          
+            
+    
            
         });
-    
-});
+
+        let btn2 = document.getElementById("s2");
+        userMan.load();
+        
+        console.log(userMan);
+        console.log(userMan.users);
+        console.log(userMan.users.length);
+        console.log(userMan.users[1].email);
+        
+
+        btn2.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+
+        let email2 = document.getElementById("email2").value;
+        let password2 = document.getElementById("password2").value;
+        console.log(password2);
+        let connexion = false ;
+        for (let i = 0; i < userMan.users.length; i++)
+
+        {
+            if ((userMan.users[i].password === password2) && (userMan.users[i].email === email2)) 
+            {
+                connexion = true;
+            }
+           
+        }
+
+        if (connexion === true) {
+            alert("Bienvenue !")
+        }
+        else {
+            alert("Mauvais mot de passe")
+        }
+        });
+        });

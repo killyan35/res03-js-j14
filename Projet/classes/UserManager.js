@@ -86,8 +86,40 @@ class UserManager {
                 return UserbyEmail;
         };
         createUser(user) {
-            this.#users.push(user);
-        };
+           
+            let userID = this.#users.length + 1;
+            let username = document.getElementById("username").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let confirm = document.getElementById("confirm").value;
+            let firstName = document.getElementById("firstname").value;
+            let lastName = document.getElementById("lastname").value;
+            let profileImage = document.getElementById("img").value;
+            
+            let double = false ;
+                    
+                    for (let i = 0; i < this.#users.length; i++)
+                    
+                    {
+                       if (this.#users[i].email === email )
+                       {
+                           double = true;
+                       }
+                    }   
+                       
+                if (double === true) 
+                {
+                    console.log("existe deja");
+                }
+                else 
+                {
+                    let user = new User (userID, username, email, password, confirm, firstName, lastName, profileImage);
+                    this.#users.push(user);
+                }
+                      
+                    
+            
+        }
         deleteUser(userId) {
             deleteUs = [ ];
             
@@ -116,29 +148,25 @@ class UserManager {
         };
         
         load() {
-            
-            let SaveUser = [];
 
-        SaveUser = sessionStorage.getItem("user");
+        let SaveUsers = JSON.parse(sessionStorage.getItem("user"));
         
-        let otherUsers = JSON.parse(SaveUser);
-        
-        let otherUsers2 =[];
-        for (let i = 0; i < otherUsers.length; i++)
+        if (SaveUsers === null)
         {
-            
-            otherUsers2.push(JSON.parse(otherUsers[i]));
-                 
+            this.#users = [];
         }
-        let save2=[];
-        
-        for (let i = 0; i < otherUsers2.length; i++)
+        else 
+        {
+            for (let i = 0; i < SaveUsers.length; i++)
             {
-             save2.push(new User(otherUsers2[i].id, otherUsers2[i].username, otherUsers2[i].email, otherUsers2[i].password, otherUsers2[i].firstName, otherUsers2[i].lastName, otherUsers2[i].profileImage));
-            
+                let SaveUser = JSON.parse(SaveUsers[i]);
+                let user = new User(SaveUser.id, SaveUser.username, SaveUser.email, SaveUser.password, SaveUser.firstName, SaveUser.lastName, SaveUser.profileImage);
+                    this.#users.push(user);
             }
-            return save2;
-                };
+            
+          }
+        }
+        
         
         login(username, password) {
             
