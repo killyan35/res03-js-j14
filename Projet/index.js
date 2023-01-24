@@ -38,14 +38,38 @@ btn.addEventListener('submit', function(event)
             let firstName = document.getElementById("firstname").value;
             let lastName = document.getElementById("lastname").value;
             let profileImage = document.getElementById("img").value;
-
+         
            
-           let newuser2 = new User(userID, username, email, password, confirm, firstName, lastName, profileImage )
-           userMan.createUser(newuser2);
-           userMan.save();
-           userMan.load();
            
-           console.log(userMan);
+            if (userMan.users.length === 0)
+            {
+                console.log("c'est le premier");
+               let newuser2 = new User(userID, username, email, password, confirm, firstName, lastName, profileImage );
+               userMan.createUser(newuser2);
+               userMan.save();
+               userMan.load();
+               console.log(userMan);
+            }
+               
+            else {
+             
+                    for (let i = 0; i < userMan.users.length; i++)
+                    
+                    {
+                       if  (userMan.users[i].email === email ) {
+                           console.log("existe deja");
+                       }
+                       else 
+                       {
+                           console.log("existe pas encore");
+                           let newuser2 = new User(userID, username, email, password, confirm, firstName, lastName, profileImage );
+                           userMan.createUser(newuser2);
+                           userMan.save();
+                       }
+                       
+                    }
+            } 
+           
         });
     
 });

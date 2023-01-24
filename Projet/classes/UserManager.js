@@ -114,10 +114,12 @@ class UserManager {
         save() {
             sessionStorage.setItem("user", JSON.stringify(this.#users));
         };
+        
         load() {
+            
             let SaveUser = [];
 
-        SaveUser = sessionStorage.getItem("users");
+        SaveUser = sessionStorage.getItem("user");
         
         let otherUsers = JSON.parse(SaveUser);
         
@@ -135,6 +137,7 @@ class UserManager {
              save2.push(new User(otherUsers2[i].id, otherUsers2[i].username, otherUsers2[i].email, otherUsers2[i].password, otherUsers2[i].firstName, otherUsers2[i].lastName, otherUsers2[i].profileImage));
             
             }
+            return save2;
                 };
         
         login(username, password) {
