@@ -19,4 +19,33 @@ let user2 = new User ("2","username2", "email2", "password2", "firstName2", "las
 
 let users = [user0, user1, user2];
 
+let newuser = [];
+let userMan = new UserManager(newuser);
+
+let formulaire = document.getElementById("fieldset");
+
+
+let btn = document.getElementById("form");
+
+btn.addEventListener('submit', function(event)
+        {
+            event.preventDefault();
+            let userID = newuser.length + 1;
+            let username = document.getElementById("username").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let confirm = document.getElementById("confirm").value;
+            let firstName = document.getElementById("firstname").value;
+            let lastName = document.getElementById("lastname").value;
+            let profileImage = document.getElementById("img").value;
+
+           
+           let newuser2 = new User(userID, username, email, password, confirm, firstName, lastName, profileImage )
+           userMan.createUser(newuser2);
+           userMan.save();
+           userMan.load();
+           
+           console.log(userMan);
+        });
+    
 });

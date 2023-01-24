@@ -12,8 +12,8 @@
     <body>  
     <main>
         <section>
-            <form>
-                <fieldset>
+            <form id="form">
+                <fieldset id="fieldset">
                     <span id="s1">
                     <label for="username">username</label>
                     <br/>
@@ -27,6 +27,10 @@
                     <br/>
                     <input type="text" name="mot-de-passe" id="password" />
                     <br/>
+                    <label for="confirm-de-passe">confirmer mot de passe</label>
+                    <br/>
+                    <input type="text" name="confirm-de-passe" id="confirm" />
+                    <br/>
                     <label for="firstname">firstname</label>
                     <br/>
                     <input type="text" name="firstname" id="firstname" />
@@ -39,7 +43,7 @@
                     <br/>
                     <input type="text" name="URL-de-l'image-de-profil" id="img" />
                     </span>
-               <span id="s2">
+                   <span id="s2">
                     <label for="email2">email</label>
                     <br/>
                     <input type="text" name="email2" id="email2" />
@@ -49,7 +53,7 @@
                     <input type="text" name="mot-de-passe2" id="password2" />
                 </span>
                 <span id="s3">
-                    <input class="btn-red" type="submit" value="Valider"/>
+                    <input id="btn" class="btn-red" type="submit" value="Valider"/>
                 </span>
                 </fieldset>
             </form>

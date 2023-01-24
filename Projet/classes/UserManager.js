@@ -122,7 +122,8 @@ class UserManager {
         let otherUsers = JSON.parse(SaveUser);
         
         let otherUsers2 =[];
-        for (let i = 0; i < otherUsers.length; i++) {
+        for (let i = 0; i < otherUsers.length; i++)
+        {
             
             otherUsers2.push(JSON.parse(otherUsers[i]));
                  
